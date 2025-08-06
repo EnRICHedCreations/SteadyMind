@@ -48,6 +48,12 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-decoration: none; /* Add this to remove underline from the link */
+            color: white; /* Make the logo text white */
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
         }
         
         .brain-icon {
@@ -245,6 +251,12 @@
             position: relative;
             overflow: hidden;
         }
+
+        .phone-mockup img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
         
         .phone-content {
             text-align: center;
@@ -435,10 +447,10 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
+                <a href="#home" class="logo">
                     <div class="brain-icon">🧠</div>
                     Steady Mind
-                </div>
+                </a>
                 <nav>
                     <ul>
                         <li><a href="#home">Home</a></li>
@@ -525,14 +537,7 @@
                     </div>
                     <div class="app-preview">
                         <div class="phone-mockup">
-                            <div class="phone-content">
-                                <h3>📱 Steady Mind</h3>
-                                <p>Beautiful, intuitive interface designed with mental health in mind</p>
-                                <br>
-                                <p>🎨 Calming purple theme</p>
-                                <p>📊 Clear progress tracking</p>
-                                <p>💙 Supportive messaging</p>
-                            </div>
+                            <img src="https://raw.githubusercontent.com/EnRICHedCreations/SteadyMind/refs/heads/main/Screenshot_20250806-163537.png" alt="Steady Mind App Preview">
                         </div>
                     </div>
                 </div>
@@ -545,10 +550,10 @@
                 <p>Available on Google Play Store. Take the first step toward better mental health management today.</p>
                 <div class="app-badges">
                     <a href="#" class="app-badge">
-                        <div>📱 Download on</div>
+                        <div>📱 Coming Soon to</div>
                         <div><strong>Google Play</strong></div>
                     </a>
-                    <a href="https://www.mediafire.com/file/j6dill5e8i812wa/SteadyMind.apk/file" class="app-badge">
+                    <a href="https://drive.google.com/file/d/1RiEcsfbQ9xStPjR3pHtTYLGFyOH1eJ6w/view?usp=drive_link" class="app-badge">
                         <div>🔽 Download Directly</div>
                         <div><strong>Sideload APK</strong></div>
                     </a>
@@ -629,7 +634,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Steady Mind. All rights reserved. Not a substitute for professional medical care.</p>
+                <p>&copy; 2024 Steady Mind. All rights reserved. Not a substitute for professional medical care.</p>
             </div>
         </div>
     </footer>
