@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steady Mind - Mental Health Tracker App</title>
+    <meta name="description" content="Take control of your mental health with Steady Mind - comprehensive mood tracking, task management, and wellness tools for bipolar disorder and depression.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2C3E50;
+            background: #F8F9FA;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6B73FF 0%, #9CA3FF 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .brain-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        main {
+            margin-top: 80px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #6B73FF 0%, #FF9F7D 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #6B73FF;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .features {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2C3E50;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: #F8F9FA;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #E8F4FD;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2C3E50;
+        }
+        
+        .benefits {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #E8F4FD 0%, #D4E6F1 100%);
+        }
+        
+        .benefits-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .benefits-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2C3E50;
+        }
+        
+        .benefits-list {
+            list-style: none;
+        }
+        
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .check-icon {
+            color: #27AE60;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .app-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(135deg, #6B73FF, #9CA3FF);
+            border-radius: 30px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .phone-content {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .download {
+            padding: 5rem 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .download h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2C3E50;
+        }
+        
+        .download p {
+            font-size: 1.2rem;
+            color: #7F8C8D;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .app-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .app-badge {
+            display: inline-block;
+            background: #2C3E50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            min-width: 200px;
+        }
+        
+        .app-badge:hover {
+            background: #34495e;
+            transform: translateY(-2px);
+        }
+        
+        .app-badge span {
+            display: block;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .emergency {
+            background: #FFE6E6;
+            padding: 3rem 0;
+            text-align: center;
+            border: 2px solid #E74C3C;
+            margin: 2rem 0;
+        }
+        
+        .emergency h2 {
+            color: #E74C3C;
+            margin-bottom: 1rem;
+        }
+        
+        .emergency-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .emergency-item {
+            text-align: center;
+        }
+        
+        .emergency-item h3 {
+            color: #E74C3C;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact {
+            padding: 5rem 0;
+            background: #F8F9FA;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2C3E50;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-card h3 {
+            color: #6B73FF;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card a {
+            color: #2C3E50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-card a:hover {
+            color: #6B73FF;
+        }
+        
+        footer {
+            background: #2C3E50;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #9CA3FF;
+        }
+        
+        .footer-section a {
+            color: #BDC3C7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            margin-top: 2rem;
+            color: #BDC3C7;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .benefits-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="brain-icon">🧠</div>
+                    Steady Mind
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Steady Mind</h1>
+                <p class="subtitle">Take control of your mental health journey with comprehensive mood tracking, wellness tasks, and mindfulness tools designed for bipolar disorder, depression, and everyday mental wellness.</p>
+                <div class="cta-buttons">
+                    <a href="#download" class="btn btn-primary">
+                        📱 Download App
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        ✨ Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Comprehensive Mental Health Tools</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">😊</span>
+                        <h3>Mood Tracking</h3>
+                        <p>Track mood, energy, and anxiety levels on a 1-10 scale. Identify patterns with interactive charts and understand what affects your mental state.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">✅</span>
+                        <h3>Wellness Tasks</h3>
+                        <p>Create daily tasks focused on self-care and mental health. Build healthy routines with customizable activities and gentle reminders.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📔</span>
+                        <h3>Private Journaling</h3>
+                        <p>Secure, private space for thoughts and reflections. Use guided prompts and connect entries to your mood data for deeper insights.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🧘</span>
+                        <h3>Mindfulness Tools</h3>
+                        <p>Built-in meditation timer and guided breathing exercises. Track sessions and find techniques that work best for you.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📊</span>
+                        <h3>Progress Analytics</h3>
+                        <p>Visual charts showing your mental health trends. Get data-driven insights for better self-awareness and improvement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔒</span>
+                        <h3>Privacy First</h3>
+                        <p>All data stored securely on your device. No account required, complete privacy protection, and you control your information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="benefits">
+            <div class="container">
+                <div class="benefits-content">
+                    <div class="benefits-text">
+                        <h2>Why Choose Steady Mind?</h2>
+                        <ul class="benefits-list">
+                            <li><span class="check-icon">✓</span> Designed specifically for bipolar disorder and depression</li>
+                            <li><span class="check-icon">✓</span> Created by mental health advocates</li>
+                            <li><span class="check-icon">✓</span> Gentle, supportive interface with no judgment</li>
+                            <li><span class="check-icon">✓</span> Works alongside professional treatment</li>
+                            <li><span class="check-icon">✓</span> Celebrates small wins and progress</li>
+                            <li><span class="check-icon">✓</span> HIPAA-compliant design principles</li>
+                            <li><span class="check-icon">✓</span> No subscription fees or hidden costs</li>
+                            <li><span class="check-icon">✓</span> Offline functionality for complete privacy</li>
+                        </ul>
+                    </div>
+                    <div class="app-preview">
+                        <div class="phone-mockup">
+                            <div class="phone-content">
+                                <h3>📱 Steady Mind</h3>
+                                <p>Beautiful, intuitive interface designed with mental health in mind</p>
+                                <br>
+                                <p>🎨 Calming purple theme</p>
+                                <p>📊 Clear progress tracking</p>
+                                <p>💙 Supportive messaging</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="download">
+            <div class="container">
+                <h2>Download Steady Mind</h2>
+                <p>Available on Google Play Store. Take the first step toward better mental health management today.</p>
+                <div class="app-badges">
+                    <a href="#" class="app-badge">
+                        <div>📱 Download on</div>
+                        <div><strong>Google Play</strong></div>
+                    </a>
+                    <a href="#" class="app-badge">
+                        <div>🍎 Coming Soon to</div>
+                        <div><strong>App Store</strong></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="emergency" class="emergency">
+            <div class="container">
+                <h2>🚨 Mental Health Emergency Resources</h2>
+                <p><strong>If you're experiencing a mental health crisis, please seek immediate help.</strong></p>
+                <div class="emergency-info">
+                    <div class="emergency-item">
+                        <h3>🇺🇸 United States</h3>
+                        <p><strong>988</strong><br>Suicide & Crisis Lifeline</p>
+                    </div>
+                    <div class="emergency-item">
+                        <h3>📱 Text Support</h3>
+                        <p><strong>Text HOME to 741741</strong><br>Crisis Text Line</p>
+                    </div>
+                    <div class="emergency-item">
+                        <h3>🚨 Emergency</h3>
+                        <p><strong>911</strong><br>Immediate Emergency</p>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem;"><em>Steady Mind is not a replacement for professional medical care. Always consult with healthcare providers for serious mental health concerns.</em></p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>📧 General Support</h3>
+                        <a href="mailto:support@steadymindapp.com">support@steadymindapp.com</a>
+                        <p>Questions about using the app, technical issues, or general inquiries.</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>🔒 Privacy Questions</h3>
+                        <a href="mailto:privacy@steadymindapp.com">privacy@steadymindapp.com</a>
+                        <p>Data privacy concerns, GDPR requests, or data deletion questions.</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>⚖️ Legal Matters</h3>
+                        <a href="mailto:legal@steadymindapp.com">legal@steadymindapp.com</a>
+                        <p>Terms of service questions, licensing, or legal concerns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Steady Mind</h3>
+                    <p>Your mental health, in your hands. A comprehensive wellness app designed for bipolar disorder, depression, and everyday mental health management.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="mailto:legal@steadymindapp.com">Contact Legal</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="mailto:support@steadymindapp.com">Contact Support</a>
+                    <a href="mailto:privacy@steadymindapp.com">Privacy Questions</a>
+                    <a href="#emergency">Crisis Resources</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Emergency</h3>
+                    <a href="tel:988">US: 988 (Crisis Line)</a>
+                    <a href="sms:741741">Text: 741741</a>
+                    <a href="tel:911">Emergency: 911</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Steady Mind. All rights reserved. Not a substitute for professional medical care.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
