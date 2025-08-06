@@ -131,11 +131,18 @@
 
         .hero h1 {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
             letter-spacing: -1px;
         }
         
+        .hero .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
         .hero .subtitle {
             font-size: clamp(1rem, 2vw, 1.3rem);
             margin-bottom: 2rem;
@@ -566,6 +573,7 @@
         <section id="home" class="hero">
             <div class="container">
                 <h1>Steady Mind</h1>
+                <h2 class="tagline">Mental Support App</h2>
                 <p class="subtitle">Take control of your mental health journey with comprehensive mood tracking, wellness tasks, and mindfulness tools designed for bipolar disorder, depression, and everyday mental wellness.</p>
                 <div class="cta-buttons">
                     <a href="#download" class="btn btn-primary">
