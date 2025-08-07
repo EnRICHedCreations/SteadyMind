@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Steady Mind</title>
+    <meta name="description" content="Privacy Policy for Steady Mind - Learn how we protect your mental health data and respect your privacy.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6B73FF;
+            --secondary-color: #FF9F7D;
+            --text-color: #2C3E50;
+            --light-bg: #F8F9FA;
+            --dark-bg: #2C3E50;
+            --accent-green: #27AE60;
+            --accent-red: #E74C3C;
+            --soft-blue: #D4E6F1;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--white);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .brain-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+            border-color: var(--white);
+        }
+
+        main {
+            padding: 3rem 0 5rem;
+        }
+
+        .content {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #E8F4FD;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--soft-blue);
+            padding-bottom: 1rem;
+        }
+        
+        .last-updated {
+            background: var(--soft-blue);
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            color: var(--text-color);
+            border: 1px solid #D4E6F1;
+        }
+        
+        h2 {
+            color: var(--text-color);
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #E8F4FD;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFE6E6 0%, #FFF0F0 100%);
+            border-left: 5px solid var(--accent-red);
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .highlight-box h3 {
+            color: var(--accent-red);
+            margin-top: 0;
+        }
+        
+        .privacy-principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .principle-card {
+            background: var(--soft-blue);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #C9E0F0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .principle-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .principle-card h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info {
+            background: var(--soft-blue);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+            border: 1px solid #D4E6F1;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: text-decoration 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: var(--dark-bg);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            padding-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: #BDC3C7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-section a {
+            color: #BDC3C7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            margin-top: 2rem;
+            color: #BDC3C7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="brain-icon">🧠</div>
+                    Steady Mind
+                </a>
+                <a href="index.html" class="back-to-home">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-container">
+            <div class="content">
+                <h1>Privacy Policy</h1>
+                
+                <div class="last-updated">
+                    <strong>Last Updated:</strong> December 2024
+                </div>
+                
+                <p>Your privacy is important to us. This Privacy Policy explains how Steady Mind ("we," "our," or "us") collects, uses, and protects your personal information.</p>
+
+                <div class="privacy-principles">
+                    <div class="principle-card">
+                        <span class="principle-icon">🔒</span>
+                        <h4>Privacy First</h4>
+                        <p>All data is stored locally on your device.</p>
+                    </div>
+                    <div class="principle-card">
+                        <span class="principle-icon">🚫</span>
+                        <h4>No Selling</h4>
+                        <p>We never sell your personal data to anyone.</p>
+                    </div>
+                    <div class="principle-card">
+                        <span class="principle-icon">👤</span>
+                        <h4>No Account</h4>
+                        <p>Use the app without any registration.</p>
+                    </div>
+                    <div class="principle-card">
+                        <span class="principle-icon">🎯</span>
+                        <h4>Your Control</h4>
+                        <p>You own and control your data at all times.</p>
+                    </div>
+                </div>
+
+                <h2>Information We Collect</h2>
+                
+                <h3>Data You Provide:</h3>
+                <ul>
+                    <li>Mood, energy, and anxiety ratings (1-10 scale)</li>
+                    <li>Task and activity information</li>
+                    <li>Journal entries and personal notes</li>
+                    <li>Symptom and trigger logs</li>
+                    <li>Meditation session data and preferences</li>
+                    <li>Custom categories and personal settings</li>
+                </ul>
+
+                <h3>Automatically Collected Data:</h3>
+                <ul>
+                    <li>App usage analytics (anonymized and aggregated)</li>
+                    <li>Device information (OS version, app version for compatibility)</li>
+                    <li>Crash reports (contains no personal or health data)</li>
+                    <li>Performance metrics (anonymized usage patterns)</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Important: What We DON'T Collect</h3>
+                    <ul>
+                        <li>Your real name, email, or contact information</li>
+                        <li>Location data or GPS tracking</li>
+                        <li>Contacts, photos, or other device data</li>
+                        <li>Social media connections or accounts</li>
+                        <li>Financial or payment information</li>
+                        <li>Third-party app data or Browse history</li>
+                    </ul>
+                </div>
+
+                <h2>How We Use Your Information</h2>
+                
+                <h3>Primary Uses:</h3>
+                <ul>
+                    <li><strong>Core Functionality:</strong> To provide mood tracking, task management, and journaling features.</li>
+                    <li><strong>Personal Insights:</strong> To generate charts, trends, and progress analytics just for you.</li>
+                    <li><strong>App Improvement:</strong> To understand usage patterns to improve features (using anonymized data only).</li>
+                    <li><strong>Bug Fixes:</strong> To identify and fix technical issues to improve stability.</li>
+                    <li><strong>Personalization:</strong> To remember your preferences and settings.</li>
+                </ul>
+
+                <h3>We Absolutely DO NOT:</h3>
+                <ul>
+                    <li>❌ Sell your personal data to third parties</li>
+                    <li>❌ Share your mental health information with anyone</li>
+                    <li>❌ Use your data for advertising or marketing</li>
+                    <li>❌ Access your data without your explicit permission</li>
+                    <li>❌ Combine your data with other datasets</li>
+                    <li>❌ Share data with insurance companies or employers</li>
+                </ul>
+
+                <h2>Data Storage and Security</h2>
+                
+                <h3>Local Storage (Your Device):</h3>
+                <ul>
+                    <li><strong>All personal and health data</strong> is stored exclusively on your device.</li>
+                    <li><strong>No cloud storage</strong> of sensitive information without your explicit consent.</li>
+                    <li><strong>You maintain complete control</strong> over your information at all times.</li>
+                    <li><strong>Uninstalling the app</strong> permanently removes all local data.</li>
+                </ul>
+
+                <h3>Security Measures:</h3>
+                <ul>
+                    <li><strong>Encryption:</strong> All data is encrypted using industry-standard protocols.</li>
+                    <li><strong>Secure Transmission:</strong> Any network communication uses HTTPS encryption.</li>
+                    <li><strong>Access Controls:</strong> Data is protected by your device's security measures.</li>
+                    <li><strong>Regular Audits:</strong> We conduct regular security reviews and updates.</li>
+                    <li><strong>No Backdoors:</strong> We cannot access your data remotely.</li>
+                </ul>
+
+                <h2>Your Rights and Control</h2>
+                
+                <h3>You Can Always:</h3>
+                <ul>
+                    <li><strong>Export Your Data:</strong> Download all your information in standard formats.</li>
+                    <li><strong>Delete Everything:</strong> Permanently remove all data from the app.</li>
+                    <li><strong>Use Anonymously:</strong> No account or personal information required.</li>
+                    <li><strong>Control Sharing:</strong> Decide what data (if any) you want to share.</li>
+                    <li><strong>Modify Settings:</strong> Change privacy preferences at any time.</li>
+                    <li><strong>Backup Data:</strong> Create your own backups and store them securely.</li>
+                </ul>
+
+                <h3>Data Retention:</h3>
+                <ul>
+                    <li>Personal health data is kept **until you delete it**.</li>
+                    <li>App settings and preferences remain **until you change them**.</li>
+                    <li>Anonymized analytics may be retained for **app improvement purposes**.</li>
+                    <li>Crash reports are automatically deleted after **90 days**.</li>
+                </ul>
+
+                <h2>Third-Party Services</h2>
+                
+                <p>We use minimal third-party services to operate the app:</p>
+                
+                <h3>Analytics (Anonymized Only):</h3>
+                <ul>
+                    <li><strong>Purpose:</strong> Understand how features are used to improve the app.</li>
+                    <li><strong>Data Shared:</strong> Anonymous usage patterns only (no personal information).</li>
+                    <li><strong>Example:</strong> "X% of users use the mood tracker daily" (not "John uses mood tracker").</li>
+                </ul>
+
+                <h3>Crash Reporting:</h3>
+                <ul>
+                    <li><strong>Purpose:</strong> Identify and fix technical problems.</li>
+                    <li><strong>Data Shared:</strong> Technical error information only.</li>
+                    <li><strong>Exclusions:</strong> No personal data, health information, or user content.</li>
+                </ul>
+
+                <h3>What We Don't Use:</h3>
+                <ul>
+                    <li>❌ Social media integrations</li>
+                    <li>❌ Advertising networks</li>
+                    <li>❌ Marketing platforms</li>
+                    <li>❌ Data brokers or analytics companies</li>
+                    <li>❌ AI training services (your data is not used to train AI models)</li>
+                </ul>
+
+                <h2>International Users & GDPR</h2>
+                
+                <p>For users in the European Union, United Kingdom, and other regions with privacy regulations:</p>
+                
+                <ul>
+                    <li><strong>Legal Basis:</strong> We process data based on your consent and legitimate interests.</li>
+                    <li><strong>Data Portability:</strong> Export your data in machine-readable formats.</li>
+                    <li><strong>Right to Erasure:</strong> Delete all personal data upon request.</li>
+                    <li><strong>Data Protection Officer:</strong> Contact privacy@steadymindapp.com for GDPR requests.</li>
+                    <li><strong>Supervisory Authority:</strong> You can file complaints with your local data protection authority.</li>
+                </ul>
+
+                <h2>Children's Privacy</h2>
+                
+                <p>Steady Mind is designed for users 13 years and older. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information, please contact us immediately.</p>
+
+                <h2>Changes to This Privacy Policy</h2>
+                
+                <p>We may update this Privacy Policy occasionally to reflect:</p>
+                <ul>
+                    <li>New features or functionality</li>
+                    <li>Changes in privacy regulations</li>
+                    <li>Improvements to our security measures</li>
+                    <li>User feedback and requests</li>
+                </ul>
+                
+                <p><strong>When we make changes:</strong></p>
+                <ul>
+                    <li>We'll update the "Last Updated" date at the top.</li>
+                    <li>Significant changes will be announced in the app.</li>
+                    <li>Continued use of the app constitutes acceptance of changes.</li>
+                    <li>You can always review the current policy on our website.</li>
+                </ul>
+
+                <div class="contact-info">
+                    <h3>Questions About Your Privacy?</h3>
+                    <p>We're here to help with any privacy concerns or questions:</p>
+                    <p>
+                        <strong>Email:</strong> <a href="mailto:privacy@steadymindapp.com">privacy@steadymindapp.com</a><br>
+                        <strong>Website:</strong> <a href="index.html">steadymindapp.com</a><br>
+                        <strong>Response Time:</strong> We respond to privacy inquiries within 72 hours.
+                    </p>
+                </div>
+
+                <h2>Your Consent</h2>
+                
+                <p>By downloading and using Steady Mind, you acknowledge that you have read, understood, and agree to this Privacy Policy. You also acknowledge that:</p>
+                
+                <ul>
+                    <li>You understand how your data is collected and used.</li>
+                    <li>You consent to the minimal data processing described above.</li>
+                    <li>You know how to exercise your privacy rights.</li>
+                    <li>You can withdraw consent by deleting the app and your data.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>Remember: You're In Control</h3>
+                    <p>Your mental health data belongs to you. Steady Mind is designed to keep your information private, secure, and under your complete control. If you ever have questions or concerns about your privacy, please don't hesitate to reach out to us.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Steady Mind</h3>
+                    <p>Your mental health, in your hands. A comprehensive wellness app designed for bipolar disorder, depression, and everyday mental health management.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="mailto:legal@steadymindapp.com">Contact Legal</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="mailto:support@steadymindapp.com">Contact Support</a>
+                    <a href="mailto:privacy@steadymindapp.com">Privacy Questions</a>
+                    <a href="index.html#emergency">Crisis Resources</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Emergency</h3>
+                    <a href="tel:988">US: 988 (Crisis Line)</a>
+                    <a href="sms:741741">Text: 741741</a>
+                    <a href="tel:911">Emergency: 911</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Steady Mind. All rights reserved. Not a substitute for professional medical care.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
