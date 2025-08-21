@@ -314,12 +314,53 @@
             box-shadow: inset 0 0 15px rgba(0,0,0,0.2), 0 20px 60px rgba(0,0,0,0.2);
         }
 
-        .phone-mockup img {
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 1000%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            width: 10%;
+            flex-shrink: 0;
+        }
+
+        .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 25px;
             display: block;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(107, 115, 255, 0.3);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-color);
         }
         
         .download {
@@ -602,7 +643,7 @@
                         <p>Create daily tasks focused on self-care and mental health. Build healthy routines with customizable activities and gentle reminders.</p>
                     </div>
                     <div class="feature-card">
-                        <span class="feature-icon">📔</span>
+                        <span class="feature-icon">📝</span>
                         <h3>Private Journaling</h3>
                         <p>Secure, private space for thoughts and reflections. Use guided prompts and connect entries to your mood data for deeper insights.</p>
                     </div>
@@ -643,7 +684,52 @@
                     </div>
                     <div class="app-preview">
                         <div class="phone-mockup">
-                            <img src="https://raw.githubusercontent.com/EnRICHedCreations/SteadyMind/refs/heads/main/Screenshot_20250806-163537.png" alt="Steady Mind App Preview">
+                            <div class="carousel-container">
+                                <div class="carousel-track">
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142333.png?raw=true" alt="Steady Mind App Screenshot 1">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142342.png?raw=true" alt="Steady Mind App Screenshot 2">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142456.png?raw=true" alt="Steady Mind App Screenshot 3">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142348.png?raw=true" alt="Steady Mind App Screenshot 4">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142359.png?raw=true" alt="Steady Mind App Screenshot 5">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142432.png?raw=true" alt="Steady Mind App Screenshot 6">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142443.png?raw=true" alt="Steady Mind App Screenshot 7">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142508.png?raw=true" alt="Steady Mind App Screenshot 8">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142516.png?raw=true" alt="Steady Mind App Screenshot 9">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://github.com/EnRICHedCreations/SteadyMind/blob/main/screengrab-20250821-142532.png?raw=true" alt="Steady Mind App Screenshot 10">
+                                    </div>
+                                </div>
+                                <div class="carousel-dots">
+                                    <div class="carousel-dot active"></div>
+                                    <div class="carousel-dot"></div>
+                                    <div class="carousel-dot"></div>
+                                    <div class="carousel-dot"></div>
+                                    <div class="carousel-dot"></div>
+                                    <div class="carousel-dot"></div>
+                                    <div class="carousel-dot"></div>
+                                    <div class="carousel-dot"></div>
+                                    <div class="carousel-dot"></div>
+                                    <div class="carousel-dot"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -660,7 +746,7 @@
                         <strong>Google Play</strong>
                     </a>
                     <a href="https://www.mediafire.com/file/fttrnksgbcv651k/SteadyMindV1.1.2.apk/file" class="app-badge">
-                        <div>🔽 Download Directly</div>
+                        <div>📽 Download Directly</div>
                         <strong>Sideload APK</strong>
                     </a>
                 </div>
@@ -758,6 +844,37 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 10;
+        const track = document.querySelector('.carousel-track');
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function updateCarousel() {
+            const translateX = -(currentSlide * 10);
+            track.style.transform = `translateX(${translateX}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        // Auto-advance carousel every 3 seconds
+        setInterval(nextSlide, 3000);
+
+        // Manual dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
             });
         });
     </script>
