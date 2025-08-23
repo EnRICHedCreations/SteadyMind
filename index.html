@@ -476,8 +476,9 @@
         }
         
         .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 2rem;
             max-width: 900px;
             margin: 0 auto;
@@ -599,8 +600,9 @@
                 <nav>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="crisis-detection.html">Crisis Detection</a></li>
+                        <li><a href="technology.html">Technology</a></li>
                         <li><a href="#download">Download</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="privacy.html">Privacy</a></li>
@@ -615,7 +617,7 @@
             <div class="container">
                 <h1>SteadyMind</h1>
                 <h2 class="tagline">Mental Support App</h2>
-                <p class="subtitle">Take control of your mental health journey with comprehensive mood tracking, wellness tasks, and mindfulness tools designed for bipolar disorder, depression, and everyday mental wellness.</p>
+                <p class="subtitle">Advanced mental health companion featuring clinical-grade bipolar crisis detection, comprehensive mood tracking, and intelligent task management. Built with evidence-based algorithms and designed for privacy-first mental health care.</p>
                 <div class="cta-buttons">
                     <a href="#download" class="btn btn-primary">
                         📱 Download App
@@ -630,37 +632,181 @@
         <section id="features" class="section">
             <div class="container">
                 <h2 class="section-title">Comprehensive Mental Health Tools</h2>
-                <p class="section-subtitle">Our app is built to support you with a variety of powerful features designed to help you manage your mental well-being.</p>
+                <p class="section-subtitle">Evidence-based features designed with clinical accuracy to support your mental health journey across the spectrum of conditions.</p>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <span class="feature-icon">😊</span>
-                        <h3>Mood Tracking</h3>
-                        <p>Track mood, energy, and anxiety levels on a 1-10 scale. Identify patterns with interactive charts and understand what affects your mental state.</p>
+                        <span class="feature-icon">🧠</span>
+                        <h3>Advanced Mood Tracking</h3>
+                        <p>Multi-dimensional assessment tracking mood, energy, anxiety, and sleep patterns with statistical pattern recognition and trend analysis for deeper insights.</p>
                     </div>
                     <div class="feature-card">
-                        <span class="feature-icon">✅</span>
-                        <h3>Wellness Tasks</h3>
-                        <p>Create daily tasks focused on self-care and mental health. Build healthy routines with customizable activities and gentle reminders.</p>
+                        <span class="feature-icon">🚨</span>
+                        <h3>Bipolar Crisis Detection</h3>
+                        <p>Clinical-grade algorithms monitor for manic and depressive episodes using DSM-5 criteria, with immediate crisis intervention resources.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚡</span>
+                        <h3>Energy-Based Task Management</h3>
+                        <p>Intelligent task matching based on current energy levels with ADHD-friendly executive function prompts and focus timers.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">📝</span>
-                        <h3>Private Journaling</h3>
-                        <p>Secure, private space for thoughts and reflections. Use guided prompts and connect entries to your mood data for deeper insights.</p>
+                        <h3>Therapeutic Journaling</h3>
+                        <p>Guided therapeutic prompts with mood integration, pattern analysis, and secure export options for healthcare providers.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">🧘</span>
-                        <h3>Mindfulness Tools</h3>
-                        <p>Built-in meditation timer and guided breathing exercises. Track sessions and find techniques that work best for you.</p>
+                        <h3>Mindfulness & Meditation</h3>
+                        <p>Evidence-based breathing exercises including 4-7-8, box breathing, and meditation timers with progress tracking.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">📊</span>
-                        <h3>Progress Analytics</h3>
-                        <p>Visual charts showing your mental health trends. Get data-driven insights for better self-awareness and improvement.</p>
+                        <h3>Advanced Analytics</h3>
+                        <p>Statistical correlation analysis, trend identification, and personalized insights using machine learning algorithms.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3>Personalized Experience</h3>
+                        <p>Condition-specific setup for ADHD, Bipolar, Depression, or Anxiety with adaptive interface complexity.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">🔒</span>
-                        <h3>Privacy First</h3>
-                        <p>All data stored securely on your device. No account required, complete privacy protection, and you control your information.</p>
+                        <h3>Privacy by Design</h3>
+                        <p>Local-first architecture with end-to-end encryption. No cloud sync for sensitive data, complete user control.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🆘</span>
+                        <h3>Crisis Support System</h3>
+                        <p>Comprehensive crisis resources including safety planning, emergency contacts, and professional integration tools.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="crisis-detection" class="section">
+            <div class="container">
+                <h2 class="section-title">Clinical-Grade Crisis Detection</h2>
+                <p class="section-subtitle">Advanced bipolar crisis detection system designed with medical accuracy and DSM-5 compliance.</p>
+                
+                <div style="max-width: 1000px; margin: 0 auto;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+                        <div style="background: #FFF5F5; padding: 2rem; border-radius: 15px; border-left: 4px solid #E53E3E;">
+                            <h3 style="color: #E53E3E; margin-bottom: 1rem; display: flex; align-items: center;">
+                                <span style="margin-right: 0.5rem;">📈</span> Mania Detection
+                            </h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                                    <span style="color: #E53E3E; margin-right: 0.5rem;">•</span>
+                                    Critical sleep disruption (≤3 hours while feeling rested)
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                                    <span style="color: #E53E3E; margin-right: 0.5rem;">•</span>
+                                    Extreme mood/energy elevation patterns
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                                    <span style="color: #E53E3E; margin-right: 0.5rem;">•</span>
+                                    Multiple severe behavioral symptoms
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                                    <span style="color: #E53E3E; margin-right: 0.5rem;">•</span>
+                                    Racing thoughts and grandiosity tracking
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: #F0F8FF; padding: 2rem; border-radius: 15px; border-left: 4px solid #3182CE;">
+                            <h3 style="color: #3182CE; margin-bottom: 1rem; display: flex; align-items: center;">
+                                <span style="margin-right: 0.5rem;">📉</span> Depression Detection
+                            </h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                                    <span style="color: #3182CE; margin-right: 0.5rem;">•</span>
+                                    Extreme low mood or energy levels (≤1/10)
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                                    <span style="color: #3182CE; margin-right: 0.5rem;">•</span>
+                                    Hopelessness and worthlessness monitoring
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                                    <span style="color: #3182CE; margin-right: 0.5rem;">•</span>
+                                    Immediate suicidal ideation detection
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                                    <span style="color: #3182CE; margin-right: 0.5rem;">•</span>
+                                    Social withdrawal and concentration tracking
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; background: linear-gradient(135deg, #F0F8FF, #E8F4FD); padding: 2rem; border-radius: 15px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">How It Works</h3>
+                        <p style="margin-bottom: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                            Our system analyzes sleep patterns, mood elevation, and behavioral changes using a sophisticated multi-factor scoring algorithm. 
+                            Sleep disruption gets the highest priority as it's the most reliable early indicator of manic episodes.
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+                                <strong>Multi-Factor Analysis</strong>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Combines multiple symptoms to avoid false alarms</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚖️</div>
+                                <strong>Medical Accuracy</strong>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Based on DSM-5 diagnostic criteria</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                                <strong>Personalized Baselines</strong>
+                                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Learns your normal patterns to reduce false positives</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="section" style="background: #F8F9FA;">
+            <div class="container">
+                <h2 class="section-title">Advanced Technology Stack</h2>
+                <p class="section-subtitle">Built with cutting-edge algorithms and privacy-first architecture for clinical accuracy and user safety.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center;">
+                            <span style="margin-right: 0.5rem;">🧮</span> Pattern Recognition
+                        </h3>
+                        <p style="margin-bottom: 1rem;">Statistical correlation analysis identifies relationships between mood, sleep, and life events using linear regression and confidence scoring.</p>
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: #666;">
+                            <li>• Correlation coefficient calculation</li>
+                            <li>• Trend significance testing</li>
+                            <li>• Weekly and seasonal pattern detection</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center;">
+                            <span style="margin-right: 0.5rem;">⚡</span> Energy Matching
+                        </h3>
+                        <p style="margin-bottom: 1rem;">Analyzes historical task completion rates at different energy levels to suggest appropriate activities based on current capacity.</p>
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: #666;">
+                            <li>• Machine learning recommendations</li>
+                            <li>• Cognitive load assessment</li>
+                            <li>• Productivity goal balancing</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center;">
+                            <span style="margin-right: 0.5rem;">🔒</span> Local-First Architecture
+                        </h3>
+                        <p style="margin-bottom: 1rem;">All sensitive data processing occurs on-device with AsyncStorage persistence and optional encrypted backups.</p>
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: #666;">
+                            <li>• No cloud sync for mental health data</li>
+                            <li>• End-to-end encryption</li>
+                            <li>• HIPAA-compliant design principles</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -672,14 +818,16 @@
                     <div class="benefits-text">
                         <h2>Why Choose SteadyMind?</h2>
                         <ul class="benefits-list">
-                            <li><span class="check-icon">✓</span> Designed specifically for bipolar disorder and depression</li>
-                            <li><span class="check-icon">✓</span> Created by mental health advocates</li>
-                            <li><span class="check-icon">✓</span> Gentle, supportive interface with no judgment</li>
-                            <li><span class="check-icon">✓</span> Works alongside professional treatment</li>
-                            <li><span class="check-icon">✓</span> Celebrates small wins and progress</li>
-                            <li><span class="check-icon">✓</span> HIPAA-compliant design principles</li>
-                            <li><span class="check-icon">✓</span> No subscription fees or hidden costs</li>
-                            <li><span class="check-icon">✓</span> Offline functionality for complete privacy</li>
+                            <li><span class="check-icon">✓</span> Clinical-grade bipolar crisis detection with DSM-5 accuracy</li>
+                            <li><span class="check-icon">✓</span> Comprehensive dual-pole monitoring (mania and depression)</li>
+                            <li><span class="check-icon">✓</span> Advanced statistical pattern recognition and trend analysis</li>
+                            <li><span class="check-icon">✓</span> Personalized onboarding for ADHD, Bipolar, Depression, Anxiety</li>
+                            <li><span class="check-icon">✓</span> Energy-based task management with cognitive load balancing</li>
+                            <li><span class="check-icon">✓</span> Therapeutic journaling with 10+ evidence-based prompts</li>
+                            <li><span class="check-icon">✓</span> Local-first privacy with no cloud sync for sensitive data</li>
+                            <li><span class="check-icon">✓</span> Professional integration tools for healthcare providers</li>
+                            <li><span class="check-icon">✓</span> Machine learning insights without compromising privacy</li>
+                            <li><span class="check-icon">✓</span> Crisis support with immediate resource access</li>
                         </ul>
                     </div>
                     <div class="app-preview">
@@ -778,22 +926,12 @@
         <section id="contact" class="section contact">
             <div class="container">
                 <h2>Contact Us</h2>
-                <p class="section-subtitle">We're here to help. Reach out to the right team for your specific needs.</p>
+                <p class="section-subtitle">We're here to help with all your questions, concerns, and feedback.</p>
                 <div class="contact-info">
-                    <div class="contact-card">
-                        <h3>📧 General Support</h3>
-                        <a href="mailto:support@steadymindapp.com">support@steadymindapp.com</a>
-                        <p>Questions about using the app, technical issues, or general inquiries.</p>
-                    </div>
-                    <div class="contact-card">
-                        <h3>🔒 Privacy Questions</h3>
-                        <a href="mailto:privacy@steadymindapp.com">privacy@steadymindapp.com</a>
-                        <p>Data privacy concerns, GDPR requests, or data deletion questions.</p>
-                    </div>
-                    <div class="contact-card">
-                        <h3>⚖️ Legal Matters</h3>
-                        <a href="mailto:legal@steadymindapp.com">legal@steadymindapp.com</a>
-                        <p>Terms of service questions, licensing, or legal concerns.</p>
+                    <div class="contact-card" style="text-align: center;">
+                        <h3>📧 Get in Touch</h3>
+                        <a href="mailto:thesteadymindapp@gmail.com" style="font-size: 1.1rem; font-weight: 600;">thesteadymindapp@gmail.com</a>
+                        <p style="margin-top: 1rem;">For all inquiries including technical support, privacy questions, feedback, and general information about SteadyMind.</p>
                     </div>
                 </div>
             </div>
@@ -811,12 +949,12 @@
                     <h3>Legal</h3>
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
-                    <a href="mailto:legal@steadymindapp.com">Contact Legal</a>
+                    <a href="mailto:thesteadymindapp@gmail.com">Contact Legal</a>
                 </div>
                 <div class="footer-section">
                     <h3>Support</h3>
-                    <a href="mailto:support@steadymindapp.com">Contact Support</a>
-                    <a href="mailto:privacy@steadymindapp.com">Privacy Questions</a>
+                    <a href="mailto:thesteadymindapp@gmail.com">Contact Support</a>
+                    <a href="mailto:thesteadymindapp@gmail.com">Privacy Questions</a>
                     <a href="#emergency">Crisis Resources</a>
                 </div>
                 <div class="footer-section">
