@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Detection - SteadyMind Mental Health App</title>
+    <meta name="description" content="Clinical-grade bipolar crisis detection system with DSM-5 accuracy, dual-pole monitoring, and immediate intervention resources.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6B73FF;
+            --secondary-color: #FF9F7D;
+            --text-color: #2C3E50;
+            --light-bg: #F8F9FA;
+            --dark-bg: #2C3E50;
+            --accent-green: #27AE60;
+            --accent-red: #E74C3C;
+            --soft-blue: #D4E6F1;
+            --white: #FFFFFF;
+            --mania-red: #E53E3E;
+            --depression-blue: #3182CE;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--white);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .brain-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--mania-red), var(--depression-blue));
+            color: var(--white);
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #7F8C8D;
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .dual-pole-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .mania-card {
+            background: linear-gradient(135deg, #FFF5F5, #FFE5E5);
+            border-radius: 20px;
+            padding: 3rem;
+            border-left: 6px solid var(--mania-red);
+            box-shadow: 0 10px 30px rgba(229, 62, 62, 0.1);
+        }
+
+        .depression-card {
+            background: linear-gradient(135deg, #F0F8FF, #E6F3FF);
+            border-radius: 20px;
+            padding: 3rem;
+            border-left: 6px solid var(--depression-blue);
+            box-shadow: 0 10px 30px rgba(49, 130, 206, 0.1);
+        }
+
+        .pole-title {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+        }
+
+        .mania-card .pole-title {
+            color: var(--mania-red);
+        }
+
+        .depression-card .pole-title {
+            color: var(--depression-blue);
+        }
+
+        .crisis-triggers {
+            margin: 2rem 0;
+        }
+
+        .crisis-triggers h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .trigger-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .trigger-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .mania-card .trigger-list li::before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .depression-card .trigger-list li::before {
+            content: "🔵";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .algorithm-explanation {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--primary-color);
+        }
+
+        .algorithm-step {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .algorithm-step h4 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .risk-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .risk-level {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .risk-low {
+            background: linear-gradient(135deg, #F0FFF4, #E8F8F0);
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .risk-moderate {
+            background: linear-gradient(135deg, #FFFACD, #FFF8DC);
+            border-top: 4px solid #FFA500;
+        }
+
+        .risk-high {
+            background: linear-gradient(135deg, #FFE4E1, #FFCCCB);
+            border-top: 4px solid #FF6347;
+        }
+
+        .risk-crisis {
+            background: linear-gradient(135deg, #FFE5E5, #FFCCCC);
+            border-top: 4px solid var(--accent-red);
+        }
+
+        .risk-level h4 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .risk-low h4 { color: var(--accent-green); }
+        .risk-moderate h4 { color: #FF8C00; }
+        .risk-high h4 { color: #FF6347; }
+        .risk-crisis h4 { color: var(--accent-red); }
+
+        .medical-accuracy {
+            background: linear-gradient(135deg, #E8F4FD, #D6EAF8);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border-left: 6px solid var(--primary-color);
+        }
+
+        .medical-accuracy h3 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-item h4 {
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-box {
+            background: #FFFACD;
+            border: 2px solid #FFD700;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .warning-box h3 {
+            color: #B8860B;
+            margin-bottom: 1rem;
+        }
+
+        .emergency-section {
+            background: linear-gradient(135deg, #FFE5E5, #FFCCCC);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            border: 3px solid var(--accent-red);
+        }
+
+        .emergency-section h3 {
+            color: var(--accent-red);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .emergency-contacts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .emergency-contact {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .emergency-contact h4 {
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .emergency-contact .phone {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .header-content {
+                justify-content: center;
+            }
+            .dual-pole-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="brain-icon">🧠</div>
+                    SteadyMind
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="crisis-detection.html">Crisis Detection</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Crisis Detection System</h1>
+            <p>Revolutionary dual-pole crisis detection for bipolar disorder with clinical-grade accuracy and immediate intervention capabilities.</p>
+        </div>
+    </section>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <a href="index.html" class="back-button">← Back to Home</a>
+
+                <h2 class="section-title">Comprehensive Bipolar Crisis Detection</h2>
+                <p class="section-subtitle">SteadyMind's crisis detection system monitors both poles of bipolar disorder with medical-grade accuracy, providing early warning and immediate intervention resources.</p>
+
+                <div class="dual-pole-grid">
+                    <div class="mania-card">
+                        <h3 class="pole-title">
+                            <span style="font-size: 2rem;">📈</span>
+                            Manic Episode Detection
+                        </h3>
+                        <p style="margin-bottom: 2rem;">Advanced monitoring of manic symptoms based on DSM-5 diagnostic criteria with emphasis on sleep disruption as the most reliable early indicator.</p>
+                        
+                        <div class="crisis-triggers">
+                            <h4>Crisis Detection Triggers:</h4>
+                            <ul class="trigger-list">
+                                <li><strong>Critical Sleep Disruption:</strong> ≤3 hours sleep while feeling rested (highest priority indicator)</li>
+                                <li><strong>Extreme Mood/Energy:</strong> 9-10/10 levels with behavioral symptoms</li>
+                                <li><strong>Multiple Severe Symptoms:</strong> ≥2 severe behavioral indicators simultaneously</li>
+                                <li><strong>Behavioral Clusters:</strong> Racing thoughts + grandiosity + impulsivity</li>
+                            </ul>
+                        </div>
+
+                        <div class="crisis-triggers">
+                            <h4>Monitored Indicators:</h4>
+                            <ul class="trigger-list">
+                                <li>Racing thoughts (rapid thinking patterns)</li>
+                                <li>Grandiosity (inflated self-esteem)</li>
+                                <li>Impulsivity (poor decision-making)</li>
+                                <li>Rapid speech and excessive talkativeness</li>
+                                <li>Physical restlessness and hyperactivity</li>
+                                <li>Risk-taking behaviors</li>
+                                <li>Unusual optimism and distractibility</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="depression-card">
+                        <h3 class="pole-title">
+                            <span style="font-size: 2rem;">📉</span>
+                            Depression Crisis Detection
+                        </h3>
+                        <p style="margin-bottom: 2rem;">Comprehensive monitoring of depressive episodes with immediate suicidal ideation detection and crisis intervention protocols.</p>
+                        
+                        <div class="crisis-triggers">
+                            <h4>Crisis Detection Triggers:</h4>
+                            <ul class="trigger-list">
+                                <li><strong>Extreme Low Levels:</strong> Mood or energy ≤1/10 (immediate crisis indicator)</li>
+                                <li><strong>Severe Combined Depression:</strong> Both mood and energy ≤2/10</li>
+                                <li><strong>High Hopelessness/Worthlessness:</strong> Either scale ≥8/10</li>
+                                <li><strong>Suicidal Ideation:</strong> Any indication triggers immediate crisis protocol</li>
+                            </ul>
+                        </div>
+
+                        <div class="crisis-triggers">
+                            <h4>Depressive Mood Indicators:</h4>
+                            <ul class="trigger-list">
+                                <li>Hopelessness (feelings of despair about the future)</li>
+                                <li>Worthlessness and excessive guilt</li>
+                                <li>Concentration difficulty and decision-making problems</li>
+                                <li>Social withdrawal and isolation behaviors</li>
+                                <li>Loss of interest in previously enjoyed activities</li>
+                                <li>Severe fatigue beyond normal low energy</li>
+                                <li>Significant appetite changes</li>
+                                <li>Suicidal ideation and thoughts of death</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="algorithm-explanation">
+                    <h3 style="color: var(--primary-color); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="font-size: 1.5rem;">🧠</span>
+                        How the Algorithm Works
+                    </h3>
+                    <p style="margin-bottom: 2rem; font-size: 1.1rem;">Our crisis detection system uses a sophisticated multi-factor scoring approach that analyzes patterns over time rather than relying on single indicators, ensuring medical accuracy while minimizing false alarms.</p>
+
+                    <div class="algorithm-step">
+                        <h4><span>1️⃣</span> Sleep Pattern Analysis</h4>
+                        <p>Sleep disruption receives the highest weighting as it's the most reliable early indicator of manic episodes. The system monitors sleep hours (0-15+ range), sleep quality, and the critical "feeling rested despite little sleep" indicator.</p>
+                    </div>
+
+                    <div class="algorithm-step">
+                        <h4><span>2️⃣</span> Multi-Factor Scoring</h4>
+                        <p>Each symptom receives weighted scores based on clinical significance. Sleep disruption and suicidal ideation get maximum priority, while multiple moderate symptoms can trigger alerts even without single severe indicators.</p>
+                    </div>
+
+                    <div class="algorithm-step">
+                        <h4><span>3️⃣</span> Baseline Learning</h4>
+                        <p>The system establishes personalized baselines over 14+ days to understand individual patterns, reducing false positives by accounting for personal variations in mood and energy levels.</p>
+                    </div>
+
+                    <div class="algorithm-step">
+                        <h4><span>4️⃣</span> Pattern Recognition</h4>
+                        <p>Advanced statistical analysis identifies concerning trends and correlations, looking for sustained patterns rather than isolated incidents to ensure clinical accuracy.</p>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Risk Level Classification</h2>
+                <div class="risk-levels">
+                    <div class="risk-level risk-low">
+                        <h4>🟢 Low Risk</h4>
+                        <p><strong>Score: &lt;2</strong></p>
+                        <p>Normal fluctuations within established baselines. Continued monitoring and routine self-care recommendations.</p>
+                    </div>
+
+                    <div class="risk-level risk-moderate">
+                        <h4>🟡 Moderate Risk</h4>
+                        <p><strong>Score: 2-4</strong></p>
+                        <p>Concerning patterns detected. Increased self-monitoring, sleep hygiene focus, and optional healthcare provider contact.</p>
+                    </div>
+
+                    <div class="risk-level risk-high">
+                        <h4>🟠 High Risk</h4>
+                        <p><strong>Score: 4-6</strong></p>
+                        <p>Significant episode risk. Healthcare provider contact recommended, activity modifications, and enhanced support resources.</p>
+                    </div>
+
+                    <div class="risk-level risk-crisis">
+                        <h4>🔴 Crisis Risk</h4>
+                        <p><strong>Score: ≥6</strong></p>
+                        <p>Immediate crisis intervention needed. Emergency resources provided, professional intervention strongly recommended.</p>
+                    </div>
+                </div>
+
+                <div class="medical-accuracy">
+                    <h3><span style="font-size: 1.5rem;">⚕️</span> Medical Accuracy Standards</h3>
+                    <p style="margin-bottom: 2rem;">Our algorithms are designed with clinical accuracy and safety as the highest priorities, following established medical guidelines and evidence-based practices.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4><span>📋</span> DSM-5 Compliance</h4>
+                            <p>Crisis detection criteria based on Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition guidelines for manic and major depressive episodes.</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <h4><span>🔬</span> Clinical Validation</h4>
+                            <p>Algorithms calibrated to avoid over-diagnosis while ensuring genuine crises are detected. Sleep patterns weighted heavily as most reliable indicators.</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <h4><span>📊</span> Statistical Rigor</h4>
+                            <p>Confidence scoring prevents false positives from incomplete data. Multiple symptom requirements ensure diagnostic accuracy.</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <h4><span>👥</span> Personalized Baselines</h4>
+                            <p>Individual pattern learning over 14+ days reduces false alarms by accounting for personal variations in mood and behavior.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠️ Important Medical Disclaimer</h3>
+                    <p><strong>SteadyMind is not a substitute for professional medical care.</strong> While our algorithms are designed with clinical accuracy, they are intended as supportive tools alongside professional treatment. Always consult healthcare providers for serious mental health concerns and follow their guidance for crisis situations.</p>
+                </div>
+
+                <div class="emergency-section">
+                    <h3>🚨 Immediate Crisis Resources</h3>
+                    <p style="margin-bottom: 2rem; font-size: 1.1rem;"><strong>If you're experiencing a mental health crisis, please seek immediate help using these resources:</strong></p>
+                    
+                    <div class="emergency-contacts">
+                        <div class="emergency-contact">
+                            <h4>🇺🇸 Crisis Lifeline</h4>
+                            <div class="phone">988</div>
+                            <p>24/7 Suicide & Crisis Prevention</p>
+                        </div>
+
+                        <div class="emergency-contact">
+                            <h4>📱 Crisis Text Line</h4>
+                            <div class="phone">Text HOME to 741741</div>
+                            <p>Free, confidential text support</p>
+                        </div>
+
+                        <div class="emergency-contact">
+                            <h4>🚨 Emergency Services</h4>
+                            <div class="phone">911</div>
+                            <p>Immediate emergency response</p>
+                        </div>
+
+                        <div class="emergency-contact">
+                            <h4>🏥 NAMI Helpline</h4>
+                            <div class="phone">1-800-950-NAMI</div>
+                            <p>National Alliance on Mental Illness</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 2rem; font-style: italic;">Crisis detection in SteadyMind automatically surfaces these resources when risk levels indicate the need for immediate support.</p>
+                </div>
+
+                <div class="medical-accuracy" style="background: #F0FFF4; border-left-color: var(--accent-green);">
+                    <h3 style="color: var(--accent-green);"><span style="font-size: 1.5rem;">🛡️</span> Safety Features & Privacy</h3>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4><span>🔒</span> Complete Privacy</h4>
+                            <p>All crisis detection processing occurs locally on your device. No mental health data is transmitted to servers or shared without explicit consent.</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <h4><span>⏰</span> Cooldown Periods</h4>
+                            <p>Intelligent alert management prevents notification spam while ensuring genuine crises are never missed.</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <h4><span>👤</span> User Control</h4>
+                            <p>Users can acknowledge, dismiss, or provide feedback on risk assessments to improve algorithm accuracy over time.</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <h4><span>🎯</span> Precision Targeting</h4>
+                            <p>Multi-factor analysis prevents false alarms from single symptoms while maintaining sensitivity to genuine crisis situations.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

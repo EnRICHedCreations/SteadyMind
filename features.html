@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - SteadyMind Mental Health App</title>
+    <meta name="description" content="Comprehensive feature overview of SteadyMind - advanced mood tracking, bipolar crisis detection, energy-based task management, and therapeutic journaling.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6B73FF;
+            --secondary-color: #FF9F7D;
+            --text-color: #2C3E50;
+            --light-bg: #F8F9FA;
+            --dark-bg: #2C3E50;
+            --accent-green: #27AE60;
+            --accent-red: #E74C3C;
+            --soft-blue: #D4E6F1;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--white);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .brain-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #7F8C8D;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .feature-detail {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .feature-detail h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-detail .icon {
+            font-size: 2rem;
+            padding: 0.5rem;
+            background: var(--light-bg);
+            border-radius: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .feature-item h4 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .technical-spec {
+            background: #F0F8FF;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .header-content {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="brain-icon">🧠</div>
+                    SteadyMind
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="crisis-detection.html">Crisis Detection</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Comprehensive Features</h1>
+            <p>Detailed overview of SteadyMind's advanced mental health tools, designed with clinical accuracy and evidence-based approaches.</p>
+        </div>
+    </section>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <a href="index.html" class="back-button">← Back to Home</a>
+
+                <!-- Advanced Mood Tracking -->
+                <div class="feature-detail">
+                    <h3><span class="icon">🧠</span>Advanced Mood Tracking System</h3>
+                    <p>SteadyMind's mood tracking goes far beyond simple ratings, providing comprehensive multi-dimensional assessment with statistical pattern recognition.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>Multi-Dimensional Assessment</h4>
+                            <p>Track mood, energy, and anxiety on precise 1-10 scales with visual feedback and descriptive guidance for accurate self-assessment.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Sleep Pattern Analysis</h4>
+                            <p>Comprehensive sleep tracking from 0-15+ hours with quality assessment and correlation to mood patterns.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Statistical Pattern Recognition</h4>
+                            <p>Advanced algorithms identify trends, correlations, and patterns using linear regression and confidence scoring.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Interactive Visualizations</h4>
+                            <p>Dynamic charts showing mood trends, energy correlations, and weekly patterns with personalized insights.</p>
+                        </div>
+                    </div>
+
+                    <div class="technical-spec">
+                        <strong>Technical Implementation:</strong> Uses React Native interactive charts with statistical correlation analysis. 
+                        Data processing includes trend detection algorithms, baseline establishment over 14+ days, and confidence scoring for assessment reliability.
+                    </div>
+                </div>
+
+                <!-- Bipolar Crisis Detection -->
+                <div class="feature-detail">
+                    <h3><span class="icon">🚨</span>Clinical-Grade Bipolar Crisis Detection</h3>
+                    <p>Revolutionary dual-pole crisis detection system monitoring both manic and depressive episodes with medical-grade accuracy based on DSM-5 criteria.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>Manic Episode Detection</h4>
+                            <p>Monitors critical sleep disruption (≤3 hours while feeling rested), extreme mood/energy elevation, and multiple behavioral indicators.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Depression Crisis Detection</h4>
+                            <p>Tracks extreme low mood/energy (≤1/10), hopelessness, worthlessness, and immediate suicidal ideation detection.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Multi-Factor Risk Assessment</h4>
+                            <p>Sophisticated scoring system combining sleep patterns, mood indicators, and behavioral changes to prevent false alarms.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Progressive Alert System</h4>
+                            <p>Four-tier risk levels (low, moderate, high, crisis) with appropriate intervention escalation and immediate resource access.</p>
+                        </div>
+                    </div>
+
+                    <div class="technical-spec">
+                        <strong>Clinical Accuracy:</strong> Algorithm weights sleep disruption most heavily as the most reliable early indicator. 
+                        Requires multiple severe symptoms for crisis alerts, with personalized baseline establishment to reduce false positives.
+                    </div>
+                </div>
+
+                <!-- Energy-Based Task Management -->
+                <div class="feature-detail">
+                    <h3><span class="icon">⚡</span>Intelligent Energy-Based Task Management</h3>
+                    <p>Revolutionary task system that matches activities to your current mental and physical energy levels, with special support for ADHD and executive function challenges.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>Energy Level Matching</h4>
+                            <p>Tasks categorized by required energy (low/medium/high) with smart filtering based on current mood and energy assessments.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Executive Function Support</h4>
+                            <p>ADHD-friendly features including planning prompts, transition guidance, and task breakdown with step-by-step assistance.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Focus Timer & Pomodoro</h4>
+                            <p>Customizable work/break intervals with interruption logging and progress tracking for sustained attention.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Smart Prioritization</h4>
+                            <p>Priority weighting system: Self-care (4) > High (3) > Medium (2) > Low (1) with deadline consideration.</p>
+                        </div>
+                    </div>
+
+                    <div class="technical-spec">
+                        <strong>Machine Learning:</strong> Analyzes historical task completion rates at different energy levels to improve recommendations over time. 
+                        Balances productivity goals with mental health maintenance using cognitive load assessment.
+                    </div>
+                </div>
+
+                <!-- Therapeutic Journaling -->
+                <div class="feature-detail">
+                    <h3><span class="icon">📝</span>Evidence-Based Therapeutic Journaling</h3>
+                    <p>Comprehensive journaling system with guided therapeutic prompts, mood integration, and pattern analysis for deeper self-understanding.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>10+ Therapeutic Prompts</h4>
+                            <p>Evidence-based prompts including gratitude, challenge reflection, mood pattern exploration, and progress tracking.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Mood Integration</h4>
+                            <p>Journal entries automatically linked to mood data for correlation analysis and pattern identification.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Theme Detection</h4>
+                            <p>Automatic identification of recurring themes, concerns, and progress markers in journal content.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Professional Sharing</h4>
+                            <p>Secure export options in PDF and text formats for sharing with healthcare providers while maintaining privacy control.</p>
+                        </div>
+                    </div>
+
+                    <div class="technical-spec">
+                        <strong>Privacy Protection:</strong> All journal content encrypted locally with optional sharing controls. 
+                        Sentiment analysis performed on-device without cloud transmission of sensitive personal content.
+                    </div>
+                </div>
+
+                <!-- Meditation & Mindfulness -->
+                <div class="feature-detail">
+                    <h3><span class="icon">🧘</span>Scientific Meditation & Breathing Exercises</h3>
+                    <p>Evidence-based mindfulness tools including proven breathing techniques and meditation timers with progress tracking.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>4-7-8 Breathing</h4>
+                            <p>Deep relaxation technique: Inhale 4, Hold 7, Exhale 8 seconds. 4 cycles, 76-second duration for sleep aid and anxiety reduction.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Box Breathing</h4>
+                            <p>Military-grade focus technique: 4-second intervals for inhale, hold, exhale, pause. 6 cycles for stress reduction and concentration.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Meditation Timer</h4>
+                            <p>Customizable meditation sessions with optional audio guidance, progress tracking, and consistency streak monitoring.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Mood Impact Correlation</h4>
+                            <p>Track how meditation and breathing exercises affect your mood and energy levels over time.</p>
+                        </div>
+                    </div>
+
+                    <div class="technical-spec">
+                        <strong>Scientific Basis:</strong> Breathing patterns based on research from Harvard Medical School and military applications. 
+                        Visual guidance with animated breathing prompts ensures proper technique execution.
+                    </div>
+                </div>
+
+                <!-- Personalized Experience -->
+                <div class="feature-detail">
+                    <h3><span class="icon">🎯</span>Condition-Specific Personalization</h3>
+                    <p>Adaptive interface and feature prioritization based on specific mental health conditions and experience levels.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>ADHD Optimization</h4>
+                            <p>Executive function prompts, focus timers, task breakdown, and attention management tools.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Bipolar Disorder Focus</h4>
+                            <p>Advanced mood tracking, mania detection, sleep pattern monitoring, and crisis intervention resources.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Depression Support</h4>
+                            <p>Mood pattern focus, energy-based activity suggestions, and comprehensive crisis support resources.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Anxiety Management</h4>
+                            <p>Anxiety tracking with breathing exercises, grounding techniques, and stress reduction tools.</p>
+                        </div>
+                    </div>
+
+                    <div class="technical-spec">
+                        <strong>Adaptive Interface:</strong> Progressive disclosure system introduces complex features gradually based on experience level. 
+                        Dashboard customization prioritizes relevant widgets and tools based on selected conditions.
+                    </div>
+                </div>
+
+                <!-- Crisis Support System -->
+                <div class="feature-detail">
+                    <h3><span class="icon">🆘</span>Comprehensive Crisis Support Infrastructure</h3>
+                    <p>Multi-layered crisis intervention system with immediate resource access, safety planning, and professional integration capabilities.</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>Immediate Crisis Resources</h4>
+                            <p>Quick access to 988 Suicide Prevention Lifeline, Crisis Text Line (741741), and emergency services with one-touch dialing.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Safety Planning Tools</h4>
+                            <p>Personalized crisis intervention strategies including warning sign identification, coping strategies, and support contacts.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Grounding Techniques</h4>
+                            <p>5-4-3-2-1 sensory technique, progressive muscle relaxation, and distress tolerance strategies (TIPP technique).</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Professional Integration</h4>
+                            <p>Secure data sharing capabilities with healthcare providers and emergency contact notification systems.</p>
+                        </div>
+                    </div>
+
+                    <div class="technical-spec">
+                        <strong>Crisis Detection Integration:</strong> Automatically surfaces crisis resources when risk assessments indicate moderate to crisis levels. 
+                        Geolocation sharing available with explicit user consent for emergency situations.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
